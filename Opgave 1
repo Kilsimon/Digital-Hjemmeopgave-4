@@ -1,1 +1,21 @@
+% Hjemmeopgave 4
+clc
+close all
+clear all
+% Opgave 1:
+T=1;
+Nch=16;
+m=0:Nch-1;
+t=m*T/Nch;
 
+% Her er p = n = 1
+Sn=exp(1i*2*pi*t*1/T);
+Sp=exp(1i*2*pi*t*(-1)/T);
+sum(Sn.*Sp)*T/Nch
+% det ses at de ikke er ortogonale, da svaret er 1.
+
+% Her er p = 2 og n = 1
+Sn=exp(1i*2*pi*t*1/T);
+Sp=exp(1i*2*pi*t*(-2)/T);
+sum(Sn.*Sp)*T/Nch
+% det ses her at summen er meget lille og antages for at være nul.
