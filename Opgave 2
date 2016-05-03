@@ -32,13 +32,29 @@ length(y_k)
 
 %% Del 2
 
+% m skal måske ændre navn.
+m=16;
+
 re_y_k=real(y_k);
 im_y_k=imag(y_k);
 
-% m skal måske ændre navn.
-m=16;
+a0=reshape([re_y_k;zeros(m-1,16000)],1,m*16000);
+b0=reshape([im_y_k;zeros(m-1,16000)],1,m*16000);
+
 f_c=32/T;
 Ts=T/m;
 g=ones(1,m);
+
+i=conv(g,a0);
+q=conv(g,b0);
+
+N=length(i)
+length(q)
+N/16
+
+
+v=i.*(cos(2*pi*f_c*Ts)*sqrt(2))+q.*(sin(2*pi*f_c*Ts)*sqrt(2));
+
+plot(v(1:500))
 
 
