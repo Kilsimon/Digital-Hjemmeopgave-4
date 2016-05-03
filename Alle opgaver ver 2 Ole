@@ -84,5 +84,23 @@ plot(f,fftshift(S))
 
 %% Opgave 3
 %Del 1
+% I og Q laves ud fra figuren i opgaven:
+i = v.*(cos(2*pi*f_c*t)*sqrt(2));
+q = v.*(sin(2*pi*f_c*t)*sqrt(2));
 
+% Disse konverteres:
+I = conv(g,i);
+Q = conv(g,q);
 
+I(16:16:end-15)
+synkpunkt = 16;
+cla reset
+hold on
+
+for j=1:3000
+plot(I(synkpunkt+(j-1)*m),Q(synkpunkt+(j-1)*m),'*')
+end
+title('Modtaget signal uden støj for 3000');
+hold off
+%% Opgave 4 
+% Ca. 1100 fejl
